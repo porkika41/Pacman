@@ -30,7 +30,7 @@ void cursor(int x, int y) {
 	SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), coord);
 }
 
-void palya_beolvasas() {//max 100x100-as p·ly·t lehet megadni
+void palya_beolvasas() {//max 100x100-as p√°ly√°t lehet megadni
 	int sor, oszlop, i, j;
 	FILE* fp;
 	fp = fopen("palya.txt", "r");
@@ -44,16 +44,16 @@ void palya_beolvasas() {//max 100x100-as p·ly·t lehet megadni
 	fclose(fp);
 	for (i = 0; i < sor; ++i) {
 		for (j = 0; j < oszlop; ++j) {
-			if (palya[i][j] == 2) {//fal kirajzol·s
-				printf("∞");
+			if (palya[i][j] == 2) {//fal kirajzol√°s
+				printf("¬∞");
 			}
-			else if (palya[i][j] == 1) {//pontok kirajzol·sa az ˙tra
+			else if (palya[i][j] == 1) {//pontok kirajzol√°sa az √∫tra
 				printf(".");
 			}
-			else if (palya[i][j] == 0 || palya[i][j] == 5) {// ¸res ˙t
+			else if (palya[i][j] == 0 || palya[i][j] == 5) {// √ºres √∫t
 				printf(" ");
 			}
-			else if (palya[i][j] == 4) {// gy¸mˆlcs kirajzol·sa
+			else if (palya[i][j] == 4) {// gy√ºm√∂lcs kirajzol√°sa
 				printf("O");
 			}
 		}
@@ -142,7 +142,7 @@ void eredmenyek_rendezese() {
 
 
 int legrovidebb_ut(double r_fel, double r_le, double r_jobb, double r_bal) {
-	int legrovidebb = 0;//szellemek priorit·sa egyenlı utak esetÈn:fel,bal,le,jobb
+	int legrovidebb = 0;//szellemek priorit√°sa egyenl√µ utak eset√©n:fel,bal,le,jobb
 	if (r_fel <= r_le && r_fel <= r_jobb && r_fel <= r_bal && r_fel != 1000) {
 		legrovidebb = 1;//felfele
 	}
@@ -161,7 +161,7 @@ int legrovidebb_ut(double r_fel, double r_le, double r_jobb, double r_bal) {
 int szellem_irany(int elozo, int x1, int y1) {
 	double r_fel = 0, r_le = 0, r_jobb = 0, r_bal = 0;
 	char legrovidebb;
-	//pacman helyzetÈre mutatÛ vektor hosszanak kiszamolasa
+	//pacman helyzet√©re mutat√≥ vektor hosszanak kiszamolasa
 	if (palya[y1 - 1][x1] != 2 && elozo != 'l') {//fel
 		r_fel = (x - x1) * (x - x1) + (y - (y1 - 1)) * (y - (y1 - 1));
 	}
@@ -186,7 +186,7 @@ int szellem_irany(int elozo, int x1, int y1) {
 	return legrovidebb = legrovidebb_ut(r_fel, r_le, r_jobb, r_bal);
 }
 
-void pac_mozgas() {//pacman mozg·sa a p·ly·n
+void pac_mozgas() {//pacman mozg√°sa a p√°ly√°n
 	if (allapot == jobb) {
 		if (palya[y][x + 1] != 2) {
 			cursor(x, y);
@@ -196,7 +196,7 @@ void pac_mozgas() {//pacman mozg·sa a p·ly·n
 			printf("\033[0m");
 			x += 1;
 			cursor(x, y);
-			if (y == 10 && x == 18) {//alag˙t a t˙loldalra
+			if (y == 10 && x == 18) {//alag√∫t a t√∫loldalra
 				Sleep(120);
 				printf(" ");
 				x = 0;
@@ -219,7 +219,7 @@ void pac_mozgas() {//pacman mozg·sa a p·ly·n
 			printf("\033[0m");
 			x -= 1;
 			cursor(x, y);
-			if (y == 10 && x == 0) {//alag˙t a t˙loldalra
+			if (y == 10 && x == 0) {//alag√∫t a t√∫loldalra
 				x = 18;
 				printf(" ");
 				cursor(x, y);
@@ -317,7 +317,7 @@ char piros_szellem_mozgas(char elozo) {//1:fel 2:le 3:jobb 4:bal
 		printf("\033[0m");
 		x_p += 1;
 		elozo = 'j';
-		if (y_p == 10 && x_p == 18) {//alag˙t a t˙loldalra
+		if (y_p == 10 && x_p == 18) {//alag√∫t a t√∫loldalra
 			Sleep(120);
 			printf(" ");
 			x_p = 0;
@@ -341,7 +341,7 @@ char piros_szellem_mozgas(char elozo) {//1:fel 2:le 3:jobb 4:bal
 		printf("\033[0m");
 		x_p -= 1;
 		elozo = 'b';
-		if (y_p == 10 && x_p == 0) {//alag˙t a t˙loldalra
+		if (y_p == 10 && x_p == 0) {//alag√∫t a t√∫loldalra
 			x_p = 18;
 			printf(" ");
 			cursor(x_p, y_p);
@@ -409,7 +409,7 @@ char kek_szellem_mozgas(char elozo_k) {//1:fel 2:le 3:jobb 4:bal
 		printf("\033[0m");
 		x_k += 1;
 		elozo_k = 'j';
-		if (y_k == 10 && x_k == 18) {//alag˙t a t˙loldalra
+		if (y_k == 10 && x_k == 18) {//alag√∫t a t√∫loldalra
 			Sleep(120);
 			cursor(x_k, y_k);
 			printf(" ");
@@ -434,7 +434,7 @@ char kek_szellem_mozgas(char elozo_k) {//1:fel 2:le 3:jobb 4:bal
 		printf("\033[0m");
 		x_k -= 1;
 		elozo_k = 'b';
-		if (y_k == 10 && x_k == 0) {//alag˙t a t˙loldalra
+		if (y_k == 10 && x_k == 0) {//alag√∫t a t√∫loldalra
 			x_k = 18;
 			cursor(0, y_k);
 			printf(" ");
@@ -458,14 +458,14 @@ int main() {
 	cursor_elrejtes();
 	palya_beolvasas();
 
-	while (gameover == false) {//billenty˚zet bemenet alapj·n mozg·s eldˆntÈse
+	while (gameover == false) {//billenty√ªzet bemenet alapj√°n mozg√°s eld√∂nt√©se
 		bill_bemenet();
 		pac_mozgas();
-		if (palya[y][x] == 1) {//pont sz·mol·s
+		if (palya[y][x] == 1) {//pont sz√°mol√°s
 			pontok += 10;
 			palya[y][x] = 0;
 		}
-		//szellemek mozg·sa
+		//szellemek mozg√°sa
 		elozo = piros_szellem_mozgas(elozo);
 		Sleep(120);
 		elozo_k = kek_szellem_mozgas(elozo_k);
@@ -475,7 +475,7 @@ int main() {
 		printf("Pontjaid:%d", pontok);
 		cursor(x, y);
 
-		if (palya[y][x] == 4) {//sebezhetetlensÈg
+		if (palya[y][x] == 4) {//sebezhetetlens√©g
 			sebezhetetlen = 1;
 			pontok += 100;
 			palya[y][x] = 0;
@@ -500,7 +500,7 @@ int main() {
 		else
 			k += 1;
 
-		if (k == 20) {//20 lÈpÈsig sebezhetetlen
+		if (k == 20) {//20 l√©p√©sig sebezhetetlen
 			sebezhetetlen = 0;
 			k = 0;
 		}
